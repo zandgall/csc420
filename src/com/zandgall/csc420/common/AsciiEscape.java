@@ -1,0 +1,215 @@
+package com.zandgall.csc420.common;
+
+/* Taken from https://en.wikipedia.org/wiki/ANSI_escape_code#Colors */
+public class AsciiEscape {
+	public static String RESET   = "\u001B[0m";
+
+	/* Foreground Colors */
+	public static String BLACK   = "\u001B[0;30m";
+	public static String RED     = "\u001B[0;31m";
+	public static String GREEN   = "\u001B[0;32m";
+	public static String YELLOW  = "\u001B[0;33m";
+	public static String BLUE    = "\u001B[0;34m";
+	public static String MAGENTA = "\u001B[0;35m";
+	public static String CYAN    = "\u001B[0;36m";
+	public static String WHITE   = "\u001B[0;37m";
+	public static String BRIGHT_BLACK   = "\u001B[0;90m", GREY = BRIGHT_BLACK;
+	public static String BRIGHT_RED     = "\u001B[0;91m";
+	public static String BRIGHT_GREEN   = "\u001B[0;92m";
+	public static String BRIGHT_YELLOW  = "\u001B[0;93m";
+	public static String BRIGHT_BLUE    = "\u001B[0;94m";
+	public static String BRIGHT_MAGENTA = "\u001B[0;95m";
+	public static String BRIGHT_CYAN    = "\u001B[0;96m";
+	public static String BRIGHT_WHITE   = "\u001B[0;97m";
+
+	/* Bold */
+	public static String BOLD_BLACK   = "\u001B[1;30m";
+	public static String BOLD_RED     = "\u001B[1;31m";
+	public static String BOLD_GREEN   = "\u001B[1;32m";
+	public static String BOLD_YELLOW  = "\u001B[1;33m";
+	public static String BOLD_BLUE    = "\u001B[1;34m";
+	public static String BOLD_MAGENTA = "\u001B[1;35m";
+	public static String BOLD_CYAN    = "\u001B[1;36m";
+	public static String BOLD_WHITE   = "\u001B[1;37m";
+	public static String BOLD_BRIGHT_BLACK   = "\u001B[1;90m", BOLD_GREY = BRIGHT_BLACK;
+	public static String BOLD_BRIGHT_RED     = "\u001B[1;91m";
+	public static String BOLD_BRIGHT_GREEN   = "\u001B[1;92m";
+	public static String BOLD_BRIGHT_YELLOW  = "\u001B[1;93m";
+	public static String BOLD_BRIGHT_BLUE    = "\u001B[1;94m";
+	public static String BOLD_BRIGHT_MAGENTA = "\u001B[1;95m";
+	public static String BOLD_BRIGHT_CYAN    = "\u001B[1;96m";
+	public static String BOLD_BRIGHT_WHITE   = "\u001B[1;97m";
+
+	/* Faint */
+	public static String FAINT_BLACK   = "\u001B[2;30m";
+	public static String FAINT_RED     = "\u001B[2;31m";
+	public static String FAINT_GREEN   = "\u001B[2;32m";
+	public static String FAINT_YELLOW  = "\u001B[2;33m";
+	public static String FAINT_BLUE    = "\u001B[2;34m";
+	public static String FAINT_MAGENTA = "\u001B[2;35m";
+	public static String FAINT_CYAN    = "\u001B[2;36m";
+	public static String FAINT_WHITE   = "\u001B[2;37m";
+	public static String FAINT_BRIGHT_BLACK   = "\u001B[2;90m", FAINT_GREY = BRIGHT_BLACK;
+	public static String FAINT_BRIGHT_RED     = "\u001B[2;91m";
+	public static String FAINT_BRIGHT_GREEN   = "\u001B[2;92m";
+	public static String FAINT_BRIGHT_YELLOW  = "\u001B[2;93m";
+	public static String FAINT_BRIGHT_BLUE    = "\u001B[2;94m";
+	public static String FAINT_BRIGHT_MAGENTA = "\u001B[2;95m";
+	public static String FAINT_BRIGHT_CYAN    = "\u001B[2;96m";
+	public static String FAINT_BRIGHT_WHITE   = "\u001B[2;97m";
+
+	/* Italic */
+	public static String ITALIC_BLACK   = "\u001B[3;30m";
+	public static String ITALIC_RED     = "\u001B[3;31m";
+	public static String ITALIC_GREEN   = "\u001B[3;32m";
+	public static String ITALIC_YELLOW  = "\u001B[3;33m";
+	public static String ITALIC_BLUE    = "\u001B[3;34m";
+	public static String ITALIC_MAGENTA = "\u001B[3;35m";
+	public static String ITALIC_CYAN    = "\u001B[3;36m";
+	public static String ITALIC_WHITE   = "\u001B[3;37m";
+	public static String ITALIC_BRIGHT_BLACK   = "\u001B[3;90m", ITALIC_GREY = BRIGHT_BLACK;
+	public static String ITALIC_BRIGHT_RED     = "\u001B[3;91m";
+	public static String ITALIC_BRIGHT_GREEN   = "\u001B[3;92m";
+	public static String ITALIC_BRIGHT_YELLOW  = "\u001B[3;93m";
+	public static String ITALIC_BRIGHT_BLUE    = "\u001B[3;94m";
+	public static String ITALIC_BRIGHT_MAGENTA = "\u001B[3;95m";
+	public static String ITALIC_BRIGHT_CYAN    = "\u001B[3;96m";
+	public static String ITALIC_BRIGHT_WHITE   = "\u001B[3;97m";
+
+	/* Underline */
+	public static String UNDERLINE_BLACK   = "\u001B[4;30m";
+	public static String UNDERLINE_RED     = "\u001B[4;31m";
+	public static String UNDERLINE_GREEN   = "\u001B[4;32m";
+	public static String UNDERLINE_YELLOW  = "\u001B[4;33m";
+	public static String UNDERLINE_BLUE    = "\u001B[4;34m";
+	public static String UNDERLINE_MAGENTA = "\u001B[4;35m";
+	public static String UNDERLINE_CYAN    = "\u001B[4;36m";
+	public static String UNDERLINE_WHITE   = "\u001B[4;37m";
+	public static String UNDERLINE_BRIGHT_BLACK   = "\u001B[4;90m", UNDERLINE_GREY = BRIGHT_BLACK;
+	public static String UNDERLINE_BRIGHT_RED     = "\u001B[4;91m";
+	public static String UNDERLINE_BRIGHT_GREEN   = "\u001B[4;92m";
+	public static String UNDERLINE_BRIGHT_YELLOW  = "\u001B[4;93m";
+	public static String UNDERLINE_BRIGHT_BLUE    = "\u001B[4;94m";
+	public static String UNDERLINE_BRIGHT_MAGENTA = "\u001B[4;95m";
+	public static String UNDERLINE_BRIGHT_CYAN    = "\u001B[4;96m";
+	public static String UNDERLINE_BRIGHT_WHITE   = "\u001B[4;97m";
+
+	/* Background Colors */
+	public static String BLACK_BACKGROUND   = "\u001B[0;40m";
+	public static String RED_BACKGROUND     = "\u001B[0;41m";
+	public static String GREEN_BACKGROUND   = "\u001B[0;42m";
+	public static String YELLOW_BACKGROUND  = "\u001B[0;43m";
+	public static String BLUE_BACKGROUND    = "\u001B[0;44m";
+	public static String MAGENTA_BACKGROUND = "\u001B[0;45m";
+	public static String CYAN_BACKGROUND    = "\u001B[0;46m";
+	public static String WHITE_BACKGROUND   = "\u001B[0;47m";
+	public static String BRIGHT_BLACK_BACKGROUND   = "\u001B[0;90m", GREY_BACKGROUND = BRIGHT_BLACK;
+	public static String BRIGHT_RED_BACKGROUND     = "\u001B[0;91m";
+	public static String BRIGHT_GREEN_BACKGROUND   = "\u001B[0;92m";
+	public static String BRIGHT_YELLOW_BACKGROUND  = "\u001B[0;93m";
+	public static String BRIGHT_BLUE_BACKGROUND    = "\u001B[0;94m";
+	public static String BRIGHT_MAGENTA_BACKGROUND = "\u001B[0;95m";
+	public static String BRIGHT_CYAN_BACKGROUND    = "\u001B[0;96m";
+	public static String BRIGHT_WHITE_BACKGROUND   = "\u001B[0;97m";
+
+	public static void RevokeEscapes() {
+		RESET = "";
+
+		BLACK = "";
+		RED = "";
+		GREEN = "";
+		YELLOW = "";
+		BLUE = "";
+		MAGENTA = "";
+		CYAN = "";
+		WHITE = "";
+		BRIGHT_BLACK = "";
+		BRIGHT_RED = "";
+		BRIGHT_GREEN = "";
+		BRIGHT_YELLOW = "";
+		BRIGHT_BLUE = "";
+		BRIGHT_MAGENTA = "";
+		BRIGHT_CYAN = "";
+		BRIGHT_WHITE = "";
+		BOLD_BLACK = "";
+		BOLD_RED = "";
+		BOLD_GREEN = "";
+		BOLD_YELLOW = "";
+		BOLD_BLUE = "";
+		BOLD_MAGENTA = "";
+		BOLD_CYAN = "";
+		BOLD_WHITE = "";
+		BOLD_BRIGHT_BLACK = "";
+		BOLD_BRIGHT_RED = "";
+		BOLD_BRIGHT_GREEN = "";
+		BOLD_BRIGHT_YELLOW = "";
+		BOLD_BRIGHT_BLUE = "";
+		BOLD_BRIGHT_MAGENTA = "";
+		BOLD_BRIGHT_CYAN = "";
+		BOLD_BRIGHT_WHITE = "";
+		FAINT_BLACK = "";
+		FAINT_RED = "";
+		FAINT_GREEN = "";
+		FAINT_YELLOW = "";
+		FAINT_BLUE = "";
+		FAINT_MAGENTA = "";
+		FAINT_CYAN = "";
+		FAINT_WHITE = "";
+		FAINT_BRIGHT_BLACK = "";
+		FAINT_BRIGHT_RED = "";
+		FAINT_BRIGHT_GREEN = "";
+		FAINT_BRIGHT_YELLOW = "";
+		FAINT_BRIGHT_BLUE = "";
+		FAINT_BRIGHT_MAGENTA = "";
+		FAINT_BRIGHT_CYAN = "";
+		FAINT_BRIGHT_WHITE = "";
+		ITALIC_BLACK = "";
+		ITALIC_RED = "";
+		ITALIC_GREEN = "";
+		ITALIC_YELLOW = "";
+		ITALIC_BLUE = "";
+		ITALIC_MAGENTA = "";
+		ITALIC_CYAN = "";
+		ITALIC_WHITE = "";
+		ITALIC_BRIGHT_BLACK = "";
+		ITALIC_BRIGHT_RED = "";
+		ITALIC_BRIGHT_GREEN = "";
+		ITALIC_BRIGHT_YELLOW = "";
+		ITALIC_BRIGHT_BLUE = "";
+		ITALIC_BRIGHT_MAGENTA = "";
+		ITALIC_BRIGHT_CYAN = "";
+		ITALIC_BRIGHT_WHITE = "";
+		UNDERLINE_BLACK = "";
+		UNDERLINE_RED = "";
+		UNDERLINE_GREEN = "";
+		UNDERLINE_YELLOW = "";
+		UNDERLINE_BLUE = "";
+		UNDERLINE_MAGENTA = "";
+		UNDERLINE_CYAN = "";
+		UNDERLINE_WHITE = "";
+		UNDERLINE_BRIGHT_BLACK = "";
+		UNDERLINE_BRIGHT_RED = "";
+		UNDERLINE_BRIGHT_GREEN = "";
+		UNDERLINE_BRIGHT_YELLOW = "";
+		UNDERLINE_BRIGHT_BLUE = "";
+		UNDERLINE_BRIGHT_MAGENTA = "";
+		UNDERLINE_BRIGHT_CYAN = "";
+		UNDERLINE_BRIGHT_WHITE = "";
+		BLACK_BACKGROUND = "";
+		RED_BACKGROUND = "";
+		GREEN_BACKGROUND = "";
+		YELLOW_BACKGROUND = "";
+		BLUE_BACKGROUND = "";
+		MAGENTA_BACKGROUND = "";
+		CYAN_BACKGROUND = "";
+		WHITE_BACKGROUND = "";
+		BRIGHT_BLACK_BACKGROUND = "";
+		BRIGHT_RED_BACKGROUND = "";
+		BRIGHT_GREEN_BACKGROUND = "";
+		BRIGHT_YELLOW_BACKGROUND = "";
+		BRIGHT_BLUE_BACKGROUND = "";
+		BRIGHT_MAGENTA_BACKGROUND = "";
+		BRIGHT_CYAN_BACKGROUND = "";
+		BRIGHT_WHITE_BACKGROUND = "";
+	}
+}
