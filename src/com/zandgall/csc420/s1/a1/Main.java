@@ -2,6 +2,8 @@ package com.zandgall.csc420.s1.a1;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.nio.charset.Charset;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -14,8 +16,11 @@ public class Main {
 	public static void main(String[] args) throws FileNotFoundException { // Deferring errors for readability
 		Header.print("Session 1", "Assignment 1", "Random Name Generator");
 
+		// Create a printwriter that allows unicode
+		PrintWriter writer = new PrintWriter(System.out, true, Charset.defaultCharset());
+
 		/* !important! */
-		// If you see weird characters - especially on windows - uncomment the following line
+		// If you see weird characters and no color - especially on windows - uncomment the following line
 		// AsciiEscape.RevokeEscapes();
 
 		// Use sets to avoid duplicates
@@ -47,59 +52,80 @@ public class Main {
 
 		// Print all names
 
-		System.out.println();
-		System.out.println(AsciiEscape.BLUE);
-		System.out.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
-		System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
-		System.out.println(" ◆ Names generated                                                        ");
-		System.out.println(" ► They are printed in first-name order as a result of the data structure ");
-		System.out.println(" No extra sorting is needed after generating and before printing in order ");
-		System.out.println(" to achieve this                                                          ");
-		System.out.println(AsciiEscape.RESET + AsciiEscape.BLUE + "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
-		System.out.println(AsciiEscape.RESET);
+		writer.println();
+		
+		writer.println(AsciiEscape.BLUE);
+		writer.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
+		writer.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ◆ Names generated                                                        " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ► They are printed in first-name order as a result of the data structure " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" No extra sorting is needed after generating and before printing in order " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" to achieve this                                                          " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE);
+		writer.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
+		writer.println(AsciiEscape.RESET);
 
 		for(Pair p : names)
-			System.out.printf("▹ %s %s%n", firstList.get(p.a), lastList.get(p.b));
+			writer.printf("▹ %s %s%n", firstList.get(p.a), lastList.get(p.b));
 
-		System.out.println();
-		System.out.println(AsciiEscape.BLUE);
-		System.out.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
-		System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
-		System.out.println(" ◆ Ordered By Last Name                                                   ");
-		System.out.println(" ► To do this, we will for-loop from 0 to the number of last names that   ");
-		System.out.println(" exist. And for each last name index, we loop through and print any names ");
-		System.out.println(" that exist with that last name index                                     ");
-		System.out.println(" ▰ Here we require a nested loop, which sacrifices last-name sorting      ");
-		System.out.println(" efficiency for incredibly quick and efficient first-name ordering and    ");
-		System.out.println(" grouping                                                                 ");
-		System.out.println(" ▰ If we wanted to sort by last name like we do for first name, we would  ");
-		System.out.println(" move 'names' into it's own list (similar to firstList and lastList), and ");
-		System.out.println(" sort it according to Point.b as opposed to Point.a, saving the order for ");
-		System.out.println(" future use                                                               ");
-		System.out.println(AsciiEscape.RESET + AsciiEscape.BLUE + "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
-		System.out.println(AsciiEscape.RESET);
+		writer.println();
+		writer.println(AsciiEscape.BLUE);
+		writer.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
+		writer.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ◆ Ordered By Last Name                                                   " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ► To do this, we will for-loop from 0 to the number of last names that   " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" exist. And for each last name index, we loop through and print any names " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" that exist with that last name index                                     " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ▰ Here we require a nested loop, which sacrifices last-name sorting      " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" efficiency for incredibly quick and efficient first-name ordering and    " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" grouping                                                                 " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ▰ If we wanted to sort by last name like we do for first name, we would  " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" move 'names' into it's own list (similar to firstList and lastList), and " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" sort it according to Point.b as opposed to Point.a, saving the order for " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" future use                                                               " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE);
+		writer.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
+		writer.println(AsciiEscape.RESET);
 
 		for(int i = 0; i < lastList.size(); i++)
 			for(Pair p : names)
 				if(p.b == i)
-					System.out.printf("▹ %s %s%n", firstList.get(p.a), lastList.get(p.b));
+					writer.printf("▹ %s %s%n", firstList.get(p.a), lastList.get(p.b));
 
-		System.out.println();
-		System.out.println(AsciiEscape.BLUE);
-		System.out.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
-		System.out.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀" + AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
-		System.out.println(" ◆ Grouped by First Name ► As our list is pre-sorted by first name, we    ");
-		System.out.println(" just print the list, but only printing the first name if it changes      ");
-		System.out.println(AsciiEscape.RESET + AsciiEscape.BLUE + "▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
-		System.out.println(AsciiEscape.RESET);
+		writer.println();
+		writer.println(AsciiEscape.BLUE);
+		writer.println(" ▁▂▂▃▃▃▄▄▄▄▅▅▅▅▅▆▆▆▆▆▆▇▇▇▇▇▇▇████████████████▇▇▇▇▇▇▇▆▆▆▆▆▆▅▅▅▅▅▄▄▄▄▃▃▃▂▂▁ ");
+		writer.println("▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀");
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" ◆ Grouped by First Name ► As our list is pre-sorted by first name, we    " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE_BACKGROUND + AsciiEscape.BOLD_YELLOW);
+		writer.println(" just print the list, but only printing the first name if it changes      " + AsciiEscape.RESET);
+		writer.print(AsciiEscape.BLUE);
+		writer.println("▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔▔");
+		writer.println(AsciiEscape.RESET);
 
 		int lastFirst = -1;
 		for(Pair p : names) {
 			if(p.a != lastFirst) {
-				System.out.printf("▹ %s%n", firstList.get(p.a));
+				writer.printf("▹ %s%n", firstList.get(p.a));
 				lastFirst = p.a;
 			}
-			System.out.printf("\t◦ %s%n", lastList.get(p.b));
+			writer.printf("\t◦ %s%n", lastList.get(p.b));
 		}
 	}
 
