@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "../src"
+        }
+    }
+}
+
+task assignment2(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s2.a2.Main'
+    standardInput = System.in
+}
