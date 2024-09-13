@@ -5,9 +5,9 @@ import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Scanner;
 
+import com.zandgall.csc420.common.AsciiEscape;
 import com.zandgall.csc420.common.Header;
 
 public class Main {
@@ -28,14 +28,23 @@ public class Main {
 
 		// Create a printwriter that allows unicode
 		writer = new PrintWriter(System.out, true, Charset.defaultCharset());
-			Scanner s = new Scanner(new File("bandinfo.txt"));
+
+		// Read file
+		Scanner s = new Scanner(new File("bandinfo.txt"));
 		while(s.hasNextLine()) {
+			// Read every line, split it by "|" character
+			// Put portion before "|" as band name, and
+			// portion after "|" as a float that needs
+			// to be parsed.
+
 			String line = s.nextLine();
 			if(line.isBlank())
 				continue;
+
 			String[] params = line.split("\\|");
 			if(params.length != 2)
 				continue;
+
 			try {
 				bands.add(new Band(params[0], Float.parseFloat(params[1])));
 			} catch(NumberFormatException e) {
@@ -44,13 +53,14 @@ public class Main {
 		}
 		s.close();
 
-		printBands();
+		// Sort bands into bandsByName, and bandsBySetTime
 		populateByName();
 		populateBySetTime();
 
 		// Main menu
 		while(true) {
-			writer.println("Search by Band Name (1) or Set Time (2), or Examine List (3): ");
+			writer.println();
+			writer.println(AsciiEscape.ITALIC_GREY + "Search by Band Name (1) or Set Time (2), or Examine List (3): " + AsciiEscape.RESET);
 			Scanner input = new Scanner(System.in);
 			int opt = input.nextInt();
 			if(opt == 1)
@@ -62,54 +72,62 @@ public class Main {
 		}
 	}
 
+	// Print bands
 	public static void printBands() {
-		writer.println("Bands - " + bands.size());
+		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands - " + bands.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
 		for(Band b : bands)
 			writer.println("▸ " + b);
+		writer.println(AsciiEscape.RESET);
+		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands by Set Time - " + bandsBySetTime.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
+		for(Band b : bandsBySetTime)
+			writer.println("▸ " + b);
+		writer.println(AsciiEscape.RESET);
+		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands by Name - " + bandsByName.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
+		for(Band b : bandsByName)
+			writer.println("▸ " + b);
+		writer.println(AsciiEscape.RESET);
 	}
 
+	// Binary search - O(log n)F
+	// While this is normall done via 
 	public static void searchBandName() {
-		writer.println("Enter name: ");
+		writer.println(AsciiEscape.ITALIC_GREEN + "Enter name: " + AsciiEscape.RESET);
 
 		Scanner input = new Scanner(System.in);
 		String name = input.nextLine();
 
-		int lower = 0, upper = bandsByName.size() - 1;
+		Band midBand;
+		int lower = 0, upper = bandsByName.size() - 1, mid;
 		while(lower != upper) {
-			int mid = (lower + upper) / 2;
-			Band midBand = bandsByName.get(mid);
+			mid = (lower + upper) / 2;
+			midBand = bandsByName.get(mid);
 			if(midBand.getName().equals(name)) {
-				writer.println("▸ " + midBand);
+				writer.println(AsciiEscape.BOLD_GREEN + "▸ " + midBand + AsciiEscape.RESET);
 				return;
 			}
 			else if(midBand.getName().compareTo(name) < 0)
-				lower = (int)Math.ceil((lower + upper) / 2.0);
+				lower = mid + 1;
 			else
-				upper = mid;
+				upper = mid - 1;
 		}
-		writer.println("Could not find \"" + name + "\"");
+		writer.println(AsciiEscape.ITALIC_RED + "Could not find \"" + name + "\"" + AsciiEscape.RESET);
 	}
 
+	// Linear search - O(n)
 	public static void searchSetTime() {
-		writer.println("Enter set time: (minute.second format)");
+		writer.println(AsciiEscape.ITALIC_MAGENTA + "Enter set time: (minute.second format)" + AsciiEscape.RESET);
 
 		Scanner input = new Scanner(System.in);
-		float time = input.nextFloat();
-
-		int lower = 0, upper = bandsByName.size() - 1;
-		while(lower != upper) {
-			int mid = (lower + upper) / 2;
-			Band midBand = bandsByName.get(mid);
-			if(midBand.getSetTime() == time) {
-				lower = mid;
-				upper = mid;
+		float time = input.nextFloat(), mindist = Float.POSITIVE_INFINITY;
+		Band result = bandsBySetTime.get(0);
+		for(Band b : bandsBySetTime) {
+			float dist = Math.abs(time - b.getSetTime());
+			if(dist < mindist) {
+				mindist = dist;
+				result = b;
 			}
-			else if(midBand.getSetTime() < time)
-				lower = (int)Math.ceil((lower + upper) / 2.0);
-			else
-				upper = mid;
 		}
-		writer.println("Closest Set Time is \"" + bandsBySetTime.get(lower) + "\"");
+		writer.println(AsciiEscape.BOLD_MAGENTA + "Closest Set Time is \"" + result + "\"" + AsciiEscape.RESET);
 	}
 
 	/* Populate the bandsByName array list */
@@ -117,22 +135,15 @@ public class Main {
 		bandsByName.addAll(bands);
 		sortByName(bandsByName);
 
-		writer.println("Bands by Name - " + bandsByName.size());
-		for(Band b : bandsByName)
-			writer.println("▸ " + b);
 	}
 
 	/* Populate the bandsBySetTime array list */
 	public static void populateBySetTime() {
 		bandsBySetTime.addAll(bands);
 		sortBySetTime(bandsBySetTime);
-
-		writer.println("Bands by Set Time - " + bandsBySetTime.size());
-		for(Band b : bandsBySetTime)
-			writer.println("▸ " + b);
-
 	}
 
+	// SEE README.md
 	private static void sortByName(ArrayList<Band> bands) {
 		ArrayList<Band> lowerList = new ArrayList<>(), upperList = new ArrayList<>();
 		
@@ -155,6 +166,7 @@ public class Main {
 		bands.addAll(upperList);
 	}
 
+	// SEE README.md
 	private static void sortBySetTime(ArrayList<Band> bands) {
 		ArrayList<Band> lowerList = new ArrayList<>(), upperList = new ArrayList<>();
 		
@@ -175,5 +187,4 @@ public class Main {
 		bands.add(middle);
 		bands.addAll(upperList);
 	}
-
 }

@@ -33,6 +33,10 @@ sort(bands: list of bands)
 
 I found it difficult to determine the time complexity of this function. I figured that it had to be O(n^2), but I wasn't sure. I verified this by counting every time a band is referenced in a loop, with 50 band names listed in bandinfo.txt, shuffling the list and sorting sub lists from length 1 to 50, plotting points as (x, y) = (length of list, total number of times 'for b in bands' loops). It matched x^2 * 1/3 almost perfectly, verifying that the function (likely) has the time complexity O(n^2).
 
+This function is not very efficient, it is just simple, and done in a recursive and a sort of creative way. Every call, it allocates a list, likely taking up a majority of the operation time.
+
+And upon more research, I've found that this is remarkably similar to QuickSort, with a few differences, as QuickSort works within the original list, only swapping elements.
+
 ```sh
 .\gradlew.bat assignment2 # Windows
 ./gradlew assignment2 # Mac/Linux
