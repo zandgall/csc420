@@ -27,7 +27,7 @@ public class Main {
 		Header.print("Session 2", "Assignment 2", "Band Coordinator");
 
 		// Create a printwriter that allows unicode
-		writer = new PrintWriter(System.out, true, Charset.defaultCharset());
+		writer = new PrintWriter(System.out, false, Charset.defaultCharset());
 
 		// Read file
 		Scanner s = new Scanner(new File("bandinfo.txt"));
@@ -61,6 +61,7 @@ public class Main {
 		while(true) {
 			writer.println();
 			writer.println(AsciiEscape.ITALIC_GREY + "Search by Band Name (1) or Set Time (2), or Examine List (3): " + AsciiEscape.RESET);
+			writer.flush();
 			Scanner input = new Scanner(System.in);
 			int opt = input.nextInt();
 			if(opt == 1)
@@ -78,31 +79,34 @@ public class Main {
 		for(Band b : bands)
 			writer.println("▸ " + b);
 		writer.println(AsciiEscape.RESET);
-		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands by Set Time - " + bandsBySetTime.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
-		for(Band b : bandsBySetTime)
-			writer.println("▸ " + b);
-		writer.println(AsciiEscape.RESET);
 		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands by Name - " + bandsByName.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
 		for(Band b : bandsByName)
 			writer.println("▸ " + b);
 		writer.println(AsciiEscape.RESET);
+		writer.println(AsciiEscape.UNDERLINE_BLUE + "Bands by Set Time - " + bandsBySetTime.size() + AsciiEscape.RESET + AsciiEscape.BLUE);
+		for(Band b : bandsBySetTime)
+			writer.println("▸ " + b);
+		writer.println(AsciiEscape.RESET);
+		writer.flush();
 	}
 
 	// Binary search - O(log n)F
 	// While this is normall done via 
 	public static void searchBandName() {
 		writer.println(AsciiEscape.ITALIC_GREEN + "Enter name: " + AsciiEscape.RESET);
+		writer.flush();
 
 		Scanner input = new Scanner(System.in);
 		String name = input.nextLine();
 
 		Band midBand;
-		int lower = 0, upper = bandsByName.size() - 1, mid;
-		while(lower != upper) {
+		int lower = 0, upper = bandsByName.size(), mid;
+		while(lower < upper) {
 			mid = (lower + upper) / 2;
 			midBand = bandsByName.get(mid);
 			if(midBand.getName().equals(name)) {
 				writer.println(AsciiEscape.BOLD_GREEN + "▸ " + midBand + AsciiEscape.RESET);
+				writer.flush();
 				return;
 			}
 			else if(midBand.getName().compareTo(name) < 0)
@@ -111,11 +115,13 @@ public class Main {
 				upper = mid - 1;
 		}
 		writer.println(AsciiEscape.ITALIC_RED + "Could not find \"" + name + "\"" + AsciiEscape.RESET);
+		writer.flush();
 	}
 
 	// Linear search - O(n)
 	public static void searchSetTime() {
 		writer.println(AsciiEscape.ITALIC_MAGENTA + "Enter set time: (minute.second format)" + AsciiEscape.RESET);
+		writer.flush();
 
 		Scanner input = new Scanner(System.in);
 		float time = input.nextFloat(), mindist = Float.POSITIVE_INFINITY;
@@ -128,6 +134,7 @@ public class Main {
 			}
 		}
 		writer.println(AsciiEscape.BOLD_MAGENTA + "Closest Set Time is \"" + result + "\"" + AsciiEscape.RESET);
+		writer.flush();
 	}
 
 	/* Populate the bandsByName array list */
