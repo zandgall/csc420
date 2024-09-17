@@ -41,6 +41,6 @@ public class Header {
 		for(int i = 0; i < maxlen; i++)
 			writer.print("█");
 		writer.println("◤ ");
-		writer.println(AsciiEscape.ITALIC_WHITE + "I certify that this is my own work" + AsciiEscape.RESET);
+		writer.println(AnsiEscape.get(AnsiEscape.ITALIC+AnsiEscape.FAINT, AnsiEscape.WHITE) + "I certify that this is my own work" + AnsiEscape.reset());
 	}
 }
