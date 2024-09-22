@@ -39,7 +39,9 @@ public class Main {
 					int radix;
 					if(s.length() <= i)
 						radix = 0;
-					else // 'a'-'a'=0, 'b'-'a'=1 ... 'z'-'a'=25, ' '-'a'=26
+					else if(s.charAt(i) == ' ') // ' '=26
+						radix = 26;
+					else // 'a'-'a'=0, 'b'-'a'=1 ... 'z'-'a'=25
 						radix = s.toLowerCase().charAt(i) - 'a';
 					radix = clamp(radix, 0, buckets.size()-1); // clamp to 0..num buckets
 			
@@ -68,13 +70,23 @@ public class Main {
 			writer.flush();
 		}
 		
+		// Print the full sorted string list
+		System.out.println();
+		System.out.println("Output:");
+		for(ArrayDeque<String> bucket : buckets)
+			for(String s : bucket)
+				System.out.println(s);
+
+		scanner.close();
 	}
 
+	// Clamp a value between the range (min, max) (inclusive)
 	private static int clamp(int input, int min, int max) {
 		return Math.min(Math.max(input, min), max);
 	}
 
 	// Create a Ansi RGB6 color with a radix, on a gradient
+	// Not necessary to the actual function of the assignment, just color codes radices
 	private static String colorFromRadix(int i) { return colorFromRadix(i, AnsiEscape.FOREGROUND); }
 	
 	private static String colorFromRadix(int i, String foregroundBackground) {

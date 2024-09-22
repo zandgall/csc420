@@ -2,6 +2,19 @@
 
 Class projects for CSC420 - Data Structures and Algorithms
 
+## Session 3
+
+### Assignment 3
+
+Lod a list of strings and sort them using buckets. Every string will be loaded into the first bucket, we loop through every bucket and Loop through 20 characters starting at the end, working backwards, putting them into a new bucket depending on the character. 'A/a' = 0, 'B/b' = 1 ... 'Z/z' = 25, ' ' = 26
+
+By the end each bucket will be sorted, and you can loop through the buckets printing all their strings to get a fully sorted list of strings.
+
+```sh
+.\gradlew.bat assignment3 # Windows
+./gradlew assignment3 # Mac/Linux
+```
+
 ## Session 2
 
 ### Assignment 2 - Band Coordinator
