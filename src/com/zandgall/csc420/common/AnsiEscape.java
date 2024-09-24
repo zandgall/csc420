@@ -5,6 +5,8 @@ public class AnsiEscape {
 	private static String RESET = "\u001B[0m";
 	public static final String UNCHANGED = "";
 
+	public static final String BEGIN = "\u001B[", END = "m";
+
 	/* Styles */
 	public static final String NORMAL = "0;";
 	public static final String BOLD = "1;";
@@ -54,7 +56,7 @@ public class AnsiEscape {
 	public static String get(String style, String foregroundColor, String backgroundColor) {
 		if(!USE_ESCAPES)
 			return "";
-		return "\u001B["+style+(foregroundColor== "" ? FOREGROUND+foregroundColor : "") +(backgroundColor == "" ? BACKGROUND+backgroundColor : "")+"m";
+		return BEGIN+style+(foregroundColor != "" ? FOREGROUND+foregroundColor : "") +(backgroundColor != "" ? BACKGROUND+backgroundColor : "") + END;	
 	}
 
 	public static String rgb6(String style, String foregroundBackground, int r, int g, int b) {
