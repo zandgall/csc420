@@ -19,6 +19,10 @@ public class RandomList<E> {
 		root = new Entry<>(entry);
 	}
 
+	public int size() {
+		return size;
+	}
+
 	public void randomAdd(E value) {
 		if(size == 0)
 			root = new Entry<>(value);
