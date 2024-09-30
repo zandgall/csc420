@@ -2,11 +2,22 @@
 
 Class projects for CSC420 - Data Structures and Algorithms
 
+## Session 4
+
+### Assignment 4
+
+Create a randomized linked list that is able to get, insert, and remove elements at random.
+
+```sh
+.\gradlew.bat assignment4 # Windows
+./gradlew assignment4 # Mac/Linux
+```
+
 ## Session 3
 
 ### Assignment 3
 
-Lod a list of strings and sort them using buckets. Every string will be loaded into the first bucket, we loop through every bucket and Loop through 20 characters starting at the end, working backwards, putting them into a new bucket depending on the character. 'A/a' = 0, 'B/b' = 1 ... 'Z/z' = 25, ' ' = 26
+Load a list of strings and sort them using buckets. Every string will be loaded into the first bucket, we loop through every bucket and Loop through 20 characters starting at the end, working backwards, putting them into a new bucket depending on the character. 'A/a' = 0, 'B/b' = 1 ... 'Z/z' = 25, ' ' = 26
 
 By the end each bucket will be sorted, and you can loop through the buckets printing all their strings to get a fully sorted list of strings.
 
