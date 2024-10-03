@@ -1,0 +1,35 @@
+plugins {
+    id 'java'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir "../src"
+        }
+    }
+}
+
+task testBST(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s5.a5.test.TestBST'
+    standardInput = System.in
+}
+
+task testBSTDelete(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s5.a5.test.TestBSTDelete'
+    standardInput = System.in
+}
+
+task testAVL(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s5.a5.test.TestAVLTree'
+    standardInput = System.in
+}
+
+task assignment5(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s5.a5.Main'
+    standardInput = System.in
+}

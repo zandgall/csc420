@@ -11,4 +11,4 @@ plugins {
 }
 
 rootProject.name = "csc420"
-include("session1", "session2", "session3", "session4")
+include("session1", "session2", "session3", "session4", "session5")
