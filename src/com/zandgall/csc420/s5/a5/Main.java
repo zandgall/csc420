@@ -11,7 +11,7 @@ import com.zandgall.csc420.s5.a5.tree.AVLTree;
 
 public class Main {
 
-	public static final int TIME_MULT = 40;
+	public static final int TIME_MULT = 1;
 
 	public static void main(String[] args) throws FileNotFoundException {
 		/* !important! */
@@ -21,6 +21,7 @@ public class Main {
 		Header.print("Session 5", "Assignment 5", "Time Slices with AVL Tree");
 		AVLTree<ProcessInfo> tree = new AVLTree<>();
 
+		// Read all process information
 		Scanner s = new Scanner(new File("processListMaster.txt"));
 		while(s.hasNextLine()) {
 			String content[] = s.nextLine().split("\\|");
@@ -32,15 +33,27 @@ public class Main {
 		}
 		s.close();
 
+		// Print out tree
+		System.out.println();
 		System.out.println("In order:");
 		for(ProcessInfo p : tree)
 			System.out.println(p);
 
+		System.out.println();
+		System.out.println("Processing...");
+		System.out.println();
+
+		// Process everything
 		ArrayDeque<ProcessInfo> completed = new ArrayDeque<>();
 		while(!tree.isEmpty()) {
+			// Run each process with the granted time based on priority,
+			// if it finishes, add to 'completed' deque
 			for(ProcessInfo p : tree)
 				if(p.executeProcess(10 - p.getPriority()))
 					completed.add(p);
+
+			// take everything out of completed and print it out,
+			// remove from tree as well
 			while(!completed.isEmpty()) {
 				ProcessInfo completedProcessInfo = completed.removeFirst();
 				System.out.println(completedProcessInfo.displayCompletedInfo());

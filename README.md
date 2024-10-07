@@ -2,6 +2,17 @@
 
 Class projects for CSC420 - Data Structures and Algorithms
 
+## Session 5
+
+### Assignment 5
+
+Create an AVL tree of processes that are granted time to process besed on their given priorities.
+
+```sh
+.\gradlew.bat assignment5 # Windows
+./gradlew assignment5
+```
+
 ## Session 4
 
 ### Assignment 4
