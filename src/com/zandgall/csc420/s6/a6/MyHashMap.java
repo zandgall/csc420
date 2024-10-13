@@ -11,7 +11,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 
 	private ArrayList<Entry<K,V>> entries;
 
-	private int size = 0;	
+	private int size = 0;
 
 	// ONLY EVER POWER OF 2
 	private int N = 8;
@@ -200,7 +200,7 @@ public class MyHashMap<K, V> implements Map<K, V> {
 		if(e == null)
 			return null;
 		if(e.key.equals(key)) {
-			entries.set(index, null);
+			entries.set(index, e.next);
 			size--;
 			return e.value;
 		}

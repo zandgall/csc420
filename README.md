@@ -2,6 +2,17 @@
 
 Class projects for CSC420 - Data Structures and Algorithms
 
+## Session 6
+
+### Assignment 6
+
+Design our own HashMap, the MyHashMap class acts as a HashMap, implementing Map<K,V>. You can test it with ``gradle testMyHashMap``, but it uses a CarInfo class in our main assignment. Which stores the Type, Make, License, State, and Owner of a car. Randomly generated and mapped to an integer that corresponds with the order they were generated.
+
+```sh
+.\gradlew.bat assignment6 # Windows
+./gradlew assignment6 # Mac/Linux
+```
+
 ## Session 5
 
 ### Assignment 5
@@ -10,7 +21,7 @@ Create an AVL tree of processes that are granted time to process besed on their 
 
 ```sh
 .\gradlew.bat assignment5 # Windows
-./gradlew assignment5
+./gradlew assignment5 # Mac/Linux
 ```
 
 ## Session 4

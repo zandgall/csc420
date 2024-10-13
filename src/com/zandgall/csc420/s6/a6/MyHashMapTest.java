@@ -2,9 +2,7 @@ package com.zandgall.csc420.s6.a6;
 
 import java.io.PrintWriter;
 import java.nio.charset.Charset;
-import java.util.Map;
 import java.util.Scanner;
-import java.util.Set;
 
 import com.zandgall.csc420.common.AnsiEscape;
 

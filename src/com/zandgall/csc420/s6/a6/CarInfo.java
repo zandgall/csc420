@@ -2,7 +2,7 @@ package com.zandgall.csc420.s6.a6;
 
 public class CarInfo {
 	// Restricted types
-	private static final int MAX_MAKE_CODE = 4;
+	private static final int NUM_MAKE_CODES = 5;
 	public enum Make {
 		Honda(0), Chevy(1), Toyota(2), Porsche(3), Ford(4);
 		
@@ -12,7 +12,7 @@ public class CarInfo {
 		}
 	}
 
-	private static final int MAX_TYPE_CODE = 4;
+	private static final int NUM_TYPE_CODES = 5;
 	public enum Type {
 		Truck(0), SUV(1), Sedan(2), Coupe(3), Minivan(4);
 
@@ -22,7 +22,7 @@ public class CarInfo {
 		}
 	}
 
-	private static final int MAX_STATE_CODE = 7;
+	private static final int NUM_STATE_CODES = 8;
 	public enum State {
 		FL(0), MN(1), TN(2), TX(3), MI(4), NY(5), KY(6), GA(7);
 
@@ -32,7 +32,7 @@ public class CarInfo {
 		}
 	}
 
-	private static final int MAX_ALPHANUM_CODE = 36;
+	private static final int NUM_ALPHANUM_CODES = 37;
 	private static int alphaNumericMap(char character) {
 		if(character >= 'A' && character <= 'Z')
 			return character - 'A'; // [0, 25]
@@ -80,16 +80,16 @@ public class CarInfo {
 		// first apply all license characters as if they're base36 values
 		for(char c : license) {
 			out += alphaNumericMap(c);
-			out *= MAX_ALPHANUM_CODE;
+			out *= NUM_ALPHANUM_CODES;
 		}
 
 		// apply type, make, and state using their given values and making space for the next digit
 		out += type.value;
-		out *= MAX_TYPE_CODE;
+		out *= NUM_TYPE_CODES;
 		out += make.value;
-		out *= MAX_MAKE_CODE;
+		out *= NUM_MAKE_CODES;
 		out += state.value;
-		out *= MAX_STATE_CODE;
+		out *= NUM_STATE_CODES;
 
 		// xor in the hash code of the owner string
 		out ^= owner.hashCode();
