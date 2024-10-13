@@ -10,6 +10,12 @@ sourceSets {
     }
 }
 
+task testMyHashMap(dependsOn: classes, type: JavaExec) {
+    classpath = sourceSets.main.runtimeClasspath
+    mainClass = 'com.zandgall.csc420.s6.a6.MyHashMapTest'
+    standardInput = System.in
+}
+
 task assignment6(dependsOn: classes, type: JavaExec) {
     classpath = sourceSets.main.runtimeClasspath
     mainClass = 'com.zandgall.csc420.s6.a6.Main'
