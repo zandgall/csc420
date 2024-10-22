@@ -1,0 +1,19 @@
+Hollywood|1|4
+San Francisco|0.5|2.75
+Salt Lake City|1.5|2.5
+Albequerque|3|4
+Seattle|0.5|1
+Calgary|2.25|0.5
+Helena|2.25|1.5
+Winnipeg|4|0.5
+Denver|3|2.5
+Duluth|4.5|1
+Kansas City|4.25|2.5
+Dallas|4.5|4
+Montreal|6|0.5
+Chicago|4.75|2
+Atlanta|5.75|4
+New Orleans|5.5|4.5
+Washington|6.5|2
+New York|6.75|1
+Miami|6.75|4.5
