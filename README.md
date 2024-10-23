@@ -2,6 +2,15 @@
 
 Class projects for CSC420 - Data Structures and Algorithms
 
+## Final Assignment
+
+Create a Weighted Graph and find shortest distance between two locations using breadth-first searching. Using Java AWT to showcase the pathfinding visually.
+
+```sh
+.\gradlew.bat finalAssignment # Windows
+./gradlew finalAssignment # Mac/Linux
+```
+
 ## Session 6
 
 ### Assignment 6
